@@ -9,3 +9,14 @@ body {
     height: 400px;
     width: 300px;
 }
+
+.weatherCards{
+    display: flex;
+    flex-direction: row;
+}
+
+.temperature{
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
