@@ -1,7 +1,4 @@
-body {
-    background-color: #d7d7d7;
-    color: black;
-}
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
 .card{
     margin: 10px 10px 10px 10px;
@@ -19,4 +16,106 @@ body {
     background-color: red;
     display: flex;
     flex-direction: row;
+}
+
+body  {
+    background-image: url('https://images.pexels.com/photos/1254736/pexels-photo-1254736.jpeg');
+  background-size:cover;
+        -webkit-animation: slidein 100s;
+        animation: slidein 100s;
+
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;              
+}
+
+@-webkit-keyframes slidein {
+from {background-position: top; background-size:4000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+}
+
+@keyframes slidein {
+from {background-position: top;background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+
+}
+
+.center{
+
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh; 
+
+}
+
+.title{
+    font-size: 100px;
+    font-weight: 100;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px;
+
+}
+
+input{
+    flex: 1;
+    height: 50px;
+    background: transparent;
+    opacity: 40%;
+    border: 0;
+    outline: 0;
+    font-size: 25px;
+    color: #333;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.search-box{
+    width: 600px;
+    background: beige;
+    opacity: 80%;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button{
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+button .fa-solid{
+    width: 30px;
+    color: #555;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.result-box ul{
+    border-top: 1px solid #999;
+    padding: 5px 10px;
+}
+
+.result-box ul li{
+    list-style: none;
+    border-radius: 3px;
+    padding: 15px 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.result-box ul li:hover{
+    background: #e9f3ff;
 }

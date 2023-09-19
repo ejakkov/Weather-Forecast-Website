@@ -80,9 +80,9 @@ async function displayCityNames(){
 
 }
 
-async function readCSV() {
+export async function readCSV() {
 
-    csvFilePath = 'city_coordinates.csv';
+ const csvFilePath = 'city_coordinates.csv';
     
     try {
       const response = await fetch(csvFilePath);
@@ -93,7 +93,7 @@ async function readCSV() {
     }
   }
 
-  function parseCSV(csvText) {
+export  function parseCSV(csvText) {
     const lines = csvText.split('\n');
     const headers = lines[0].split(',');
     const results = [];
@@ -145,6 +145,6 @@ async function choiceDropDownMenu(event) {
   getForecastData(longitude, latitude);
 }
 
-getForecastData();
-displayCityNames();
-document.getElementById('city-dropdown-menu').addEventListener('change', choiceDropDownMenu, true);
+// getForecastData();
+// displayCityNames();
+// document.getElementById('city-dropdown-menu').addEventListener('change', choiceDropDownMenu, true);
