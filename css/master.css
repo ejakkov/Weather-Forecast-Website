@@ -21,8 +21,8 @@
 body  {
     background-image: url('https://images.pexels.com/photos/1254736/pexels-photo-1254736.jpeg');
   background-size:cover;
-        -webkit-animation: slidein 100s;
-        animation: slidein 100s;
+        -webkit-animation: slidein 50s;
+        animation: slidein 50s;
 
         -webkit-animation-fill-mode: forwards;
         animation-fill-mode: forwards;
@@ -36,12 +36,12 @@ body  {
 
 @-webkit-keyframes slidein {
 from {background-position: top; background-size:4000px; }
-to {background-position: -100px 0px;background-size:2750px;}
+to {background-position: -30px 0px;background-size:2750px;}
 }
 
 @keyframes slidein {
 from {background-position: top;background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
+to {background-position: -30px 0px;background-size:2750px;}
 
 }
 

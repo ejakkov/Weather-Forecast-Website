@@ -145,6 +145,20 @@ async function choiceDropDownMenu(event) {
   getForecastData(longitude, latitude);
 }
 
+
+function handleDataFromSearchBarJS(data) {
+  alert(data);
+
+  // You can now use 'data' in file2 as needed
+}
+
+// Listen for the custom event
+window.addEventListener("sendDataEvent", function (event) {
+  console.log(event.detail);
+  const receivedData = event.detail;
+  handleDataFromSearchBarJS(receivedData);
+});
+// alert(selectedItem);
 // getForecastData();
 // displayCityNames();
 // document.getElementById('city-dropdown-menu').addEventListener('change', choiceDropDownMenu, true);
