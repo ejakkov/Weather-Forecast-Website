@@ -44,10 +44,7 @@ function display(result){
     const content = result.map((list)=>{
         return "<li>" + list + "</li>";
     })
-    
-
     resultBox.innerHTML = "<ul>" + content.join("") + "</ul>";
-
     const listItems = resultBox.querySelectorAll("li");
     listItems.forEach((item) => {
         item.addEventListener("click", function() {
@@ -55,22 +52,12 @@ function display(result){
 
         });
     });
-    
 }
 
 function selectInput(selectedItem){
-
     inputBox.value = selectedItem;
     resultBox.innerHTML = "";
     
     const newPageURL = 'index2.html?city='  + encodeURIComponent(selectedItem);
-    sendDataToMainJS('check');
     window.location.href = newPageURL;
-}
-
-
-function sendDataToMainJS(cityName) {
-    // Create a custom event to send the data
-    const event = new CustomEvent("sendDataEvent", { detail: cityName });
-    window.dispatchEvent(event);
 }
