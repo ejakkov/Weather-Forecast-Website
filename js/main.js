@@ -9,6 +9,7 @@ async function getForecastData(longitude, latitude) {
         if (Http.readyState === 4 && Http.status === 200) {
             var response = Http.responseText;
             handleResponse(response); // callback
+            console.log(response);
             return response;
         }
     }
@@ -17,7 +18,7 @@ async function getForecastData(longitude, latitude) {
 // callback function to handle the response
 function handleResponse(response) {
 
-    numberOfDaysForForecast = 5;
+    const numberOfDaysForForecast = 5;
     const weatherCardsDiv = document.getElementById('weatherCards');
     weatherCardsDiv.innerHTML = ''; // Clear existing cards
     var weatherForecast = JSON.parse(response).dataseries.slice(0,numberOfDaysForForecast);
@@ -53,11 +54,17 @@ function createCard(data) {
     dayName.textContent = data.dayName;
     dayName.classList.add(dayClass);
 
+    const weatherLabel = document.createElement('img');
+    weatherLabel.src = 'images/' + data.weather + '.png';
+    console.log('images/' + data.weather + '.png');
+    weatherLabel.classList.add('weatherLabel');
+
     // Append elements to the card
     card.appendChild(dayName);
     card.appendChild(maxTemperatureElement);
     card.appendChild(minTemperatureElement);
-    
+    card.appendChild(weatherLabel);
+
     return card;
 }
 
@@ -73,12 +80,12 @@ function includeDayNameInForecast(arrayOfForecasts){
     return arrayOfForecasts;
 }
 
-async function displayCityNames(){
-  textCSV = await readCSV();
-  parsedData = parseCSV(textCSV);
-  cityDropDownMenu(parsedData);
+// async function displayCityNames(){
+//   textCSV = await readCSV();
+//   parsedData = parseCSV(textCSV);
+//   cityDropDownMenu(parsedData);
 
-}
+// }
 
 export async function readCSV() {
 
@@ -112,42 +119,54 @@ export  function parseCSV(csvText) {
 
   }
 
-function cityDropDownMenu(cityInfo){
+// function cityDropDownMenu(cityInfo){
 
-  const cityMenuDiv = document.getElementById('city-dropdown-menu');
-  const menu = document.createElement("select");
-  cityMenuDiv.appendChild(menu);
+//   const cityMenuDiv = document.getElementById('city-dropdown-menu');
+//   const menu = document.createElement("select");
+//   cityMenuDiv.appendChild(menu);
 
-  for(let i=0; i<cityInfo.length; i++){
-    var option = document.createElement("option");
+//   for(let i=0; i<cityInfo.length; i++){
+//     var option = document.createElement("option");
 
-    option.text = cityInfo[i].city;
-    menu.appendChild(option);
-  }
+//     option.text = cityInfo[i].city;
+//     menu.appendChild(option);
+//   }
 
-}
+// }
 
 
-async function choiceDropDownMenu(event) {
+// async function choiceDropDownMenu(event) {
   
 
-  var choiceValue = event.target.value;
-  let textCSV = await readCSV();
-  let parsedData = parseCSV(textCSV);
+//   var choiceValue = event.target.value;
+//   let textCSV = await readCSV();
+//   let parsedData = parseCSV(textCSV);
 
-  for(let i=0; i<parsedData.length; i++){
-    if(choiceValue == parsedData[i].city){
-      var longitude = parsedData[i].longitude;
-      var latitude = parsedData[i].latitude;
-      break;
+//   for(let i=0; i<parsedData.length; i++){
+//     if(choiceValue == parsedData[i].city){
+//       var longitude = parsedData[i].longitude;
+//       var latitude = parsedData[i].latitude;
+//       break;
+//     }
+//   }
+//   getForecastData(longitude, latitude);
+// }
+
+if (document.getElementById('cityElement')) {
+  let cityName = window.location.href.split("=")[1];
+  document.getElementById('cityElement').textContent = "Weather in " + cityName;
+  var longitude = '';
+  var latitude = '';
+  parseCSV(await readCSV()).forEach(city =>{
+    if(city.city === cityName){
+      longitude = city.longitude;
+      latitude = city.latitude;
     }
-  }
+  });
   getForecastData(longitude, latitude);
 }
 
-if (document.getElementById('cityElement')) {
-  document.getElementById('cityElement').textContent = "aaa";
-}
+
 
 // alert(selectedItem);
 // getForecastData();

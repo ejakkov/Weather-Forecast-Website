@@ -1,0 +1,44 @@
+body  {
+    background-image: url('https://images.pexels.com/photos/1254736/pexels-photo-1254736.jpeg');
+  background-size:cover;
+        -webkit-animation: slidein 50s;
+        animation: slidein 50s;
+
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;              
+}
+
+@-webkit-keyframes slidein {
+from {background-position: top; background-size:4000px; }
+to {background-position: -30px 0px;background-size:2750px;}
+}
+
+@keyframes slidein {
+from {background-position: top;background-size:3000px; }
+to {background-position: -30px 0px;background-size:2750px;}
+
+}
+
+.card{
+    margin: 10px 10px 10px 10px;
+    background-color: aqua;
+    height: 400px;
+    width: 300px;
+}
+
+.weatherCards{
+    display: flex;
+    flex-direction: row;
+}
+
+.temperature{
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+}

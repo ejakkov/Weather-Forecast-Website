@@ -1,22 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
-.card{
-    margin: 10px 10px 10px 10px;
-    background-color: aqua;
-    height: 400px;
-    width: 300px;
-}
-
-.weatherCards{
-    display: flex;
-    flex-direction: row;
-}
-
-.temperature{
-    background-color: red;
-    display: flex;
-    flex-direction: row;
-}
 
 body  {
     background-image: url('https://images.pexels.com/photos/1254736/pexels-photo-1254736.jpeg');
