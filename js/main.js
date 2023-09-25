@@ -33,19 +33,18 @@ function handleResponse(response) {
 
 }
 
-// Function to create a card element for a data item
+
 function createCard(data) {
     const card = document.createElement('div');
-    card.classList.add('card'); // You can add CSS classes for styling here
+    card.classList.add('card'); 
   
 
-    // Create and append elements for displaying data within the card
     const maxTemperatureElement = document.createElement('p');
-    maxTemperatureElement.textContent = `Max: ${data.temp2m.max}°C`;
+    maxTemperatureElement.textContent = `High: ${data.temp2m.max}°C`;
     maxTemperatureElement.classList.add('temperature');
     
     const minTemperatureElement = document.createElement('p');
-    minTemperatureElement.textContent = `Min: ${data.temp2m.min}°C`;
+    minTemperatureElement.textContent = `Low: ${data.temp2m.min}°C`;
     minTemperatureElement.classList.add('temperature');
 
     const dayName = document.createElement('p');
@@ -58,17 +57,30 @@ function createCard(data) {
     weatherLabel.classList.add('weatherLabel');
 
     const weatherName = document.createElement('p');
-    weatherName.textContent = data.weather;
+    if(data.weather === 'pcloudy'){
+      weatherName.textContent = 'partly cloudy';
+    }else if(data.weather === 'mcloudy'){
+      weatherName.textContent = 'cloudy';
+    } else{
+      weatherName.textContent = data.weather;
+    }
+  
     weatherName.classList.add('weatherName');
 
-    // Append elements to the card
+    const temperatureContainer = document.createElement('div');
+    temperatureContainer.classList.add('temperature-container');
+    temperatureContainer.appendChild(maxTemperatureElement);
+    temperatureContainer.appendChild(minTemperatureElement);
+
+    const maximumWind = document.createElement('p');
+    temperatureContainer.classList.add('maximumWind');
+    maximumWind.textContent= `Maximum wind speed:  ${data.temp2m.min} m/s`;
 
     card.appendChild(dayName);
     card.appendChild(weatherLabel);
     card.appendChild(weatherName);
-    card.appendChild(minTemperatureElement);
-    card.appendChild(maxTemperatureElement);
-    
+    card.appendChild(temperatureContainer);
+    card.appendChild(maximumWind);
     
 
     return card;
