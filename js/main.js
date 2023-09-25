@@ -37,33 +37,39 @@ function handleResponse(response) {
 function createCard(data) {
     const card = document.createElement('div');
     card.classList.add('card'); // You can add CSS classes for styling here
-
-    const temperatureClass = 'temperature';
-    const dayClass = 'dayName';
+  
 
     // Create and append elements for displaying data within the card
     const maxTemperatureElement = document.createElement('p');
-    maxTemperatureElement.textContent = `Max temperature: ${data.temp2m.max}°C`;
-    maxTemperatureElement.classList.add(temperatureClass);
+    maxTemperatureElement.textContent = `Max: ${data.temp2m.max}°C`;
+    maxTemperatureElement.classList.add('temperature');
     
     const minTemperatureElement = document.createElement('p');
-    minTemperatureElement.textContent = `Min temperature: ${data.temp2m.min}°C`;
-    minTemperatureElement.classList.add(temperatureClass);
+    minTemperatureElement.textContent = `Min: ${data.temp2m.min}°C`;
+    minTemperatureElement.classList.add('temperature');
 
     const dayName = document.createElement('p');
     dayName.textContent = data.dayName;
-    dayName.classList.add(dayClass);
+    dayName.classList.add('dayName');
 
     const weatherLabel = document.createElement('img');
     weatherLabel.src = 'images/' + data.weather + '.png';
     console.log('images/' + data.weather + '.png');
     weatherLabel.classList.add('weatherLabel');
 
+    const weatherName = document.createElement('p');
+    weatherName.textContent = data.weather;
+    weatherName.classList.add('weatherName');
+
     // Append elements to the card
+
     card.appendChild(dayName);
-    card.appendChild(maxTemperatureElement);
-    card.appendChild(minTemperatureElement);
     card.appendChild(weatherLabel);
+    card.appendChild(weatherName);
+    card.appendChild(minTemperatureElement);
+    card.appendChild(maxTemperatureElement);
+    
+    
 
     return card;
 }
